@@ -1,6 +1,6 @@
 import sys
 
-import cv2
+# import cv2
 import extcolors
 # from colormap import rgb2hex
 import numpy as np

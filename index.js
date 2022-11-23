@@ -48,5 +48,5 @@ app.get("/api/pantones", async(req, res) => {
   res.send('Success');
 });
 
-const PORT = 9000;
+const PORT = 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}!`));

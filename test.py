@@ -10,6 +10,7 @@ import matplotlib.patches as patches
 import matplotlib.image as mpimg
 from PIL import Image
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+#  args = process.argv.slice(1);
 
 def color_to_df(input):
     colors_pre_list = str(input).replace('([(','').split(', (')[0:-1]
@@ -45,7 +46,7 @@ def find_neighbours(value, df, colname):
 
 def justprint():
      print('hello');
-     x = Image.open(r"./tmp/images.jpeg")
+     x = Image.open(r"./tmp/Employee.jpeg")
      img = extcolors.extract_from_image(x)
      print(img)
      rf= img[0]

@@ -34,7 +34,7 @@ const upload = multer({
   },
 });
 
-app.use("/uploads/", express.static(__dirname + "/uploads"));
+app.use("/tmp/", express.static(__dirname + "/tmp"));
 
 app.post("/api/pantones", upload.single("sample-image"), async (req, res) => {
   var spawn = require("child_process").spawn;

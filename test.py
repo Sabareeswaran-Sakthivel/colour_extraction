@@ -45,7 +45,7 @@ def find_neighbours(value, df, colname):
 
 def justprint():
      print('hello');
-     x = Image.open(r"./uploads/images.jpeg")
+     x = Image.open(r"./tmp/images.jpeg")
      img = extcolors.extract_from_image(x)
      print(img)
      rf= img[0]

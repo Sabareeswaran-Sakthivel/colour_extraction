@@ -38,9 +38,9 @@ app.post("/api/pantones", upload.single("image"), async (req, res) => {
   });
 });
 
-// app.get("/api/pantones", async(req, res) => {
-//   res.send('Success');
-// });
+app.get("/api/pantones", async(req, res) => {
+  res.send('Success');
+});
 
 const PORT = 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}!`));

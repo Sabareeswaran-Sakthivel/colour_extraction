@@ -2,6 +2,7 @@ import sys
 
 # import cv2
 import extcolors
+import json
 # from colormap import rgb2hex
 import numpy as np
 import pandas as pd
@@ -45,10 +46,10 @@ def find_neighbours(value, df, colname):
             return [upperneighbour_ind] 
 
 def justprint():
-     print('hello');
-     x = Image.open(r"./tmp/Employee.jpeg")
+     x = Image.open(r"./tmp/"+sys.argv[1])
      img = extcolors.extract_from_image(x)
-     print(img)
+    #  print(sys.argv[1])
+    #  print(img)
      rf= img[0]
      kf = [i[0] for i in rf]
      r = [i[0] for i in kf]
@@ -60,7 +61,9 @@ def justprint():
      df["green"] = g
      df["blue"] = b
      df["hex"] = hex
-     print(df.head())
+    #  print(hex)
+    #  print(r)
+    #  print(g)
     #  x = x.save("newpic.jpeg")
     #  plt.imshow(x)
     #  plt.savefig("newpig.jpeg")
@@ -88,13 +91,13 @@ def justprint():
           ax.add_artist(rect)
           ax.text(x = x_posi+1160, y = y_posi2+80, s = c, fontdict={'fontsize': 150})     
      ax.axis('off')
-     plt.imshow(bg)
-     plt.tight_layout()
-     plt.savefig('result.png')
+    #  plt.imshow(bg)
+    #  plt.tight_layout()
+    #  plt.savefig('result.png')
      pantone = pd.read_excel("Project/Pantome.xlsx")
-     print(pantone.head())
-     print(pantone.columns)
-     print(pantone.info())
+    #  print(pantone.head())
+    #  print(pantone.columns)
+    #  print(pantone.info())
      final = pd.DataFrame()
      for i in range(df.shape[0]):
          idx = find_neighbours(df.red.iloc[i],pantone,"RED")
@@ -106,7 +109,7 @@ def justprint():
              c = pantone.loc[idx3]
              c = c["BLUE"].sub(df.blue.iloc[i]).abs().idxmin()
              final = final.append(pantone.loc[c])
-     print(final.to_dict(orient="records"))
+     print(json.dumps(final.to_dict(orient="records")))
      ex = final.HEXACODE
      ex = ["#"+str(i) for i in ex]
      #create color palette

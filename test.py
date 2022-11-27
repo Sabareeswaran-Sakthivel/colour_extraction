@@ -142,8 +142,17 @@ def justprint():
      fil = final['f'].values
      perc = cp[cp["Pantone Number"].isin(fil)]
     #  print(perc.to_dict(orient="records"))
-     perc["HEXACODE"] = ex;
-     print(json.dumps(perc.to_dict(orient="records")))
+    #  perc = json.dumps(perc.to_dict(orient="records"));
+    #  print(perc)
+    #  for i of perc:
+    #     # print(perc[i])
+    #     print(i)
+    #  perc["HEXACODE"] = ex;
+     tmp = []
+     tmp.append(json.dumps(final.to_dict(orient="records")))
+     tmp.append(json.dumps(perc.to_dict(orient="records")))
+    #  print(json.dumps(perc.to_dict(orient="records")))
+     print(json.dumps(tmp))
      sys.stdout.flush()
 
 justprint()

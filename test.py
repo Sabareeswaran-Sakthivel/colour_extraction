@@ -109,8 +109,9 @@ def justprint():
              c = pantone.loc[idx3]
              c = c["BLUE"].sub(df.blue.iloc[i]).abs().idxmin()
              final = final.append(pantone.loc[c])
-     print(json.dumps(final.to_dict(orient="records")))
+    #  print(json.dumps(final.to_dict(orient="records")))
      ex = final.HEXACODE
+    #  print(final.f)
      ex = ["#"+str(i) for i in ex]
      #create color palette
      bg = plt.imread('bg.png')
@@ -134,6 +135,15 @@ def justprint():
      plt.imshow(bg)
      plt.savefig("hi.png")
      plt.tight_layout()
+     cp = pd.read_excel("Project/Colour Percentage.xlsx",skiprows=3)
+     cp.drop(['PMS','R','G','B'],axis=1,inplace=True)
+     cp.fillna(0,inplace=True)
+    #  print(final)
+     fil = final['f'].values
+     perc = cp[cp["Pantone Number"].isin(fil)]
+    #  print(perc.to_dict(orient="records"))
+     perc["HEXACODE"] = ex;
+     print(json.dumps(perc.to_dict(orient="records")))
      sys.stdout.flush()
 
 justprint()

@@ -30,20 +30,26 @@ def rgb_to_hex(r,g,b):
       return '#%02x%02x%02x' % (r, g, b)
 
 def find_neighbours(value, df, colname):
-    exactmatch = df[df[colname] == value]
-    if not exactmatch.empty:
-        return exactmatch.index
-    else:
+        x = []
+        exactmatch = df[df[colname] == value]
+        if not exactmatch.empty:
+            x.extend(exactmatch.index)
+   
         if sum(list(df[colname]) < value) and sum(list(df[colname]) > value):
             lowerneighbour_ind = df[df[colname] < value][colname].idxmax()
             upperneighbour_ind = df[df[colname] > value][colname].idxmin()
-            return [lowerneighbour_ind, upperneighbour_ind] 
+            y =  [lowerneighbour_ind, upperneighbour_ind]
+            x.extend(df.loc[y].index)
         elif sum(list(df[colname]) < value):
             lowerneighbour_ind = df[df[colname] < value][colname].idxmax()
-            return [lowerneighbour_ind]
+            y =  [lowerneighbour_ind]
+            x.extend(df.loc[y].index)
         elif sum(list(df[colname]) > value):
             upperneighbour_ind = df[df[colname] > value][colname].idxmin()
-            return [upperneighbour_ind] 
+            y =  [upperneighbour_ind]
+            x.extend(df.loc[y].index)
+           
+        return pd.Index(x)
 
 def justprint():
      x = Image.open(r"./tmp/"+sys.argv[1])

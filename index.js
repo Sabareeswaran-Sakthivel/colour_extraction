@@ -14,6 +14,7 @@ var storage = multer.diskStorage({
   },
 });
 var upload = multer({ storage: storage });
+// var multipleUpload = multer({storage: storage}).array('userPhoto',2);
 // app.use(express.static(__dirname + '/public'));
 app.use("/uploads", express.static("tmp"));
 
@@ -21,6 +22,17 @@ app.use("/uploads", express.static("tmp"));
 app.post("/api/pantones", upload.single("image"), async (req, res) => {
   var spawn = require("child_process").spawn;
   var process = spawn("python3", ["./test.py", req.file.filename]);
+  process.stdout.on("data", function (data) {
+   res.send(data.toString());
+  });
+});
+
+app.post('/api/photo', upload.array('image', 2), async (req, res) => {
+  console.log("-=-=-=-=");
+  console.log(req.files[0].filename);
+  var spawn = require("child_process").spawn;
+  var process = spawn("python3", ["./test2.py", req.files[0].filename, req.files[1].filename]);
+  // var process = spawn("python3", ["./test2.py"]);
   process.stdout.on("data", function (data) {
    res.send(data.toString());
   });

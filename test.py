@@ -70,6 +70,7 @@ def justprint():
     #  print(hex)
     #  print(r)
     #  print(g)
+    #  print(b)
     #  x = x.save("newpic.jpeg")
     #  plt.imshow(x)
     #  plt.savefig("newpig.jpeg")
@@ -141,8 +142,8 @@ def justprint():
      plt.imshow(bg)
      plt.savefig("hi.png")
      plt.tight_layout()
-     cp = pd.read_excel("Project/Colour Percentage.xlsx",skiprows=3)
-     cp.drop(['PMS','R','G','B'],axis=1,inplace=True)
+     cp = pd.read_excel("Project/Colour Percentage (2).xlsx",skiprows=3)
+     cp.drop(['PMS'],axis=1,inplace=True)
      cp.fillna(0,inplace=True)
     #  print(final)
      fil = final['f'].values

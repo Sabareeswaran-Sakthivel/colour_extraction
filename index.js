@@ -20,11 +20,12 @@ app.use("/uploads", express.static("tmp"));
 
 
 app.post("/api/pantones", upload.single("image"), async (req, res) => {
-  var spawn = require("child_process").spawn;
-  var process = spawn("python3", ["./test.py", req.file.filename]);
-  process.stdout.on("data", function (data) {
-   res.send(data.toString());
-  });
+  // var spawn = require("child_process").spawn;
+  // var process = spawn("python3", ["./test.py", req.file.filename]);
+  // process.stdout.on("data", function (data) {
+  //  res.send(data.toString());
+  // });
+  res.send("Success")
 });
 
 app.post('/api/photo', upload.array('image', 2), async (req, res) => {

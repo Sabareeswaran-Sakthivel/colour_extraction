@@ -68,7 +68,7 @@ def justprint():
      df["blue"] = b
      df["hex"] = hex
     #  print(hex)
-    #  print(r)
+    #  print("red",r)
     #  print(g)
     #  print(b)
     #  x = x.save("newpic.jpeg")

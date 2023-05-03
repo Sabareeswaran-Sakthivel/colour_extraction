@@ -72,20 +72,20 @@ app.post("/api/pantones1", upload.array("image", 2), async (req, res) => {
   //   process.stdout.on("data", function (data) {
   //     var filePath = "/uploads/mask.png";
   //     console.log("crop sone");
-      var process = spawn("python3", [
-        "./test2.py",
-        req.files[0].filename,
-        req.files[1].filename,
-      ]);
-      process.stdout.on("data", function (data) {
-        //  res.send(data.toString());
-        console.log(data);
-        const payload = {};
-        // payload.data = fs.readFileSync(__dirname + filePath, "base64");
-        // console.log("---", data);
-        res.send(data);
-      });
-    });
+  var process = spawn("python3", [
+    "./test2.py",
+    req.files[0].filename,
+    req.files[1].filename,
+  ]);
+  process.stdout.on("data", function (data) {
+    //   //  res.send(data.toString());
+    console.log(data.toString()[0]);
+    //   const payload = {};
+    // payload.data = fs.readFileSync(__dirname + filePath, "base64");
+    // console.log("---", data);
+    res.send(data);
+  });
+});
 //   });
 // });
 
@@ -93,8 +93,9 @@ app.post("/api/pantones2", upload.array("image", 2), async (req, res) => {
   console.log(req.files[0].filename);
   console.log(req.files[1].filename);
   var filePath = "/uploads/mask.png";
+  var spawn = require("child_process").spawn;
   var process = spawn("python3", [
-    "./test2.py",
+    "./fullTshirt.py",
     req.files[0].filename,
     req.files[1].filename,
   ]);
@@ -103,7 +104,7 @@ app.post("/api/pantones2", upload.array("image", 2), async (req, res) => {
     const payload = {};
     payload.data = fs.readFileSync(__dirname + filePath, "base64");
     console.log("---", data);
-    res.send(payload);
+    res.send(data);
   });
 });
 
@@ -115,6 +116,10 @@ function getPalleteNumber() {
     data = data;
   });
 }
+
+app.get("/api/pantones", async (req, res) => {
+  res.send("Success");
+});
 
 const PORT = 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}!`));

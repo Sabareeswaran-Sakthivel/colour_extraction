@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 # Load the two images
-img1 = cv2.imread('./img/sample_tshirt-edit.jpg')
-img2 = cv2.imread('./img/sample_tshirt.jpg')
+img1 = cv2.imread('./img/vinayag.jpeg')
+img2 = cv2.imread('./img/vinayag.jpeg')
 
 # Convert the images to grayscale
 gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)

@@ -4,10 +4,10 @@ import numpy as np
 import sys
 
 # Load the images
-# image1 = Image.open('./img/leave.png')#orignal design
-# image2 = Image.open('./img/leave2.jpeg')#cropped design
-image1 = Image.open('./img/'+sys.argv[1])
-image2 = Image.open('./img/'+sys.argv[2])
+image1 = Image.open('./img/design-2.jpeg')#orignal design
+image2 = Image.open('./img/design-2edit.jpeg')#cropped design
+# image1 = Image.open('./img/'+sys.argv[1])
+# image2 = Image.open('./img/'+sys.argv[2])
 
 # Resize the images to the same dimensions
 image1 = image1.resize((500, 500), resample=Image.BILINEAR)
